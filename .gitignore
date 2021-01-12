@@ -1,0 +1,17 @@
+# editor config file
+.vscode
+.idea
+.DS_Store
+
+# local file
+.env.local
+.env.*.local
+
+# distribution file
+dist
+
+# cache file
+__pycache__
+
+# os dependency file
+.DS_Store
