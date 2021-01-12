@@ -15,3 +15,5 @@ __pycache__
 
 # os dependency file
 .DS_Store
+
+backend/static
