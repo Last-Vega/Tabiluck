@@ -1,0 +1,39 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile_vue
+    container_name: "frontend_tabiluck"
+    volumes:
+      - "./:/app"
+      - "/app/frontend/node_modules"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile_flask
+    container_name: "backend_tabiluck"
+    volumes:
+      - "./:/app"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile_postgres
+    container_name: "postgres_tabiluck"
+    volumes:
+      - "database:/var/lib/postgresql/data"
+    expose:
+      - "5432"
+    restart: always
+
+volumes:
+  database:
+    driver: local

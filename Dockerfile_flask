@@ -1,0 +1,15 @@
+FROM python:3.7
+
+ENV DATABASE_USER=takowasan\
+    DATABASE_HOST=postgres\
+    DATABASE_PASSWORD=pass\
+    DATABASE_NAME=tabiluck
+
+WORKDIR /app
+COPY . /app
+
+RUN pip install -r requirements.txt
+
+CMD python manage.py
+
+EXPOSE 5000

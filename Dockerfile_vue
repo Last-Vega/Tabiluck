@@ -1,0 +1,9 @@
+FROM node
+
+COPY frontend/package*.json /app/frontend/
+RUN cd /app/frontend &&\
+    npm install
+
+COPY . /app/
+RUN cd /app/frontend &&\
+    NODE_OPTIONS=--max_old_space_size=4096 npm run build
